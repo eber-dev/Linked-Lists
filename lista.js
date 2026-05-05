@@ -13,11 +13,11 @@ export class LinkedList {
 
         let current = this.head;
 
-        while (current !== null) {
+        while (current.next !== null) {
             current = current.next;
         }
 
-        current.next = new Node();
+        current.next = new Node(value);
     }
 
     prepend(value) {
@@ -87,6 +87,7 @@ export class LinkedList {
             if (current.value === value) {
                 return true;
             }
+            current = current.next;
         }
 
         return true;
@@ -105,5 +106,15 @@ export class LinkedList {
         }
     }
 
-    toString() {}
+    toString() {
+        let current = this.head;
+        let result = '';
+
+        while (current !== null) {
+            result += `( ${current.value} ) -> `;
+            current = current.next;
+        }
+
+        return result + 'null';
+    }
 }
